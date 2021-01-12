@@ -10,7 +10,7 @@ public class HelloController {
 	@RequestMapping("/")
 	@ResponseBody
 	public String hello() {
-		return "Hello from Spring Boot";
+		return "Hello from Java Spring Boot";
 	}
 
 }
