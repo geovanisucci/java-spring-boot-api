@@ -2,11 +2,23 @@ package br.com.sample.forum.modelo;
 
 import java.util.UUID;
 
-public class Curso {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity(name = "Cursos")
+public class Curso {
+	
+	@Id
 	private UUID id;
 	private String nome;
 	private String categoria;
+	
+	
+
+	public Curso() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Curso(String nome, String categoria) {
 		this.id = UUID.randomUUID();

@@ -2,6 +2,11 @@ package br.com.sample.forum.modelo;
 
 import java.util.UUID;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+
+@Entity(name = "Usuarios")
 public class Usuario {
 
 	public UUID getId() {
@@ -35,9 +40,13 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
+	
+	@Id
+	
 	private UUID id;
 	private String nome;
+	
+
 	private String email;
 	private String senha;
 
@@ -64,6 +73,12 @@ public class Usuario {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+	
+
+	public Usuario() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Usuario(String nome, String email, String senha) {

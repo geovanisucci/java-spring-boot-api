@@ -3,14 +3,30 @@ package br.com.sample.forum.modelo;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class Resposta {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+@Entity(name = "Respostas")
+public class Resposta {
+	
+	@Id
 	private UUID id;
 	private String mensagem;
+	@ManyToOne
 	private Topico topico;
 	private LocalDateTime dataCriacao = LocalDateTime.now();
+	@ManyToOne
 	private Usuario autor;
 	private Boolean solucao = false;
+	
+	
+
+	public Resposta() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Resposta(String mensagem, Topico topico, Usuario autor, Boolean solucao) {
 		this.id = UUID.randomUUID();
