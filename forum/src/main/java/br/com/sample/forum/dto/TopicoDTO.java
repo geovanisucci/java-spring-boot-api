@@ -18,7 +18,7 @@ public class TopicoDTO {
 
 	}
 
-	public UUID getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -34,7 +34,7 @@ public class TopicoDTO {
 		return dataCriacao;
 	}
 
-	private UUID id;
+	private Long id;
 	private String titulo;
 	private String mensagem;
 	private LocalDateTime dataCriacao;

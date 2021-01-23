@@ -5,24 +5,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import br.com.sample.forum.modelo.enums.StatusTopico;
 
-@Entity(name = "Topicos")
+@Entity
 public class Topico {
 
-	public UUID getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -83,7 +86,9 @@ public class Topico {
 	}
 	
 	@Id
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", updatable = false, unique = true, nullable = false)
+	private Long id;
 	private String titulo;
 	private String mensagem;
 	private LocalDateTime dataCriacao = LocalDateTime.now();
@@ -104,7 +109,6 @@ public class Topico {
 	}
 
 	public Topico(String titulo, String mensagem, Curso curso) {
-		this.id = UUID.randomUUID();
 		this.titulo = titulo;
 		this.mensagem = mensagem;
 		this.curso = curso;

@@ -2,14 +2,19 @@ package br.com.sample.forum.modelo;
 
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "Cursos")
+@Entity
 public class Curso {
 	
 	@Id
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", updatable = false, unique = true, nullable = false)
+	private Long id;
 	private String nome;
 	private String categoria;
 	
@@ -21,16 +26,15 @@ public class Curso {
 	}
 
 	public Curso(String nome, String categoria) {
-		this.id = UUID.randomUUID();
 		this.nome = nome;
 		this.categoria = categoria;
 	}
 
-	public UUID getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

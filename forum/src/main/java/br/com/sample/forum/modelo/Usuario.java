@@ -2,18 +2,21 @@ package br.com.sample.forum.modelo;
 
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-@Entity(name = "Usuarios")
+@Entity
 public class Usuario {
 
-	public UUID getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -42,8 +45,9 @@ public class Usuario {
 	}
 	
 	@Id
-	
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", updatable = false, unique = true, nullable = false)
+	private Long id;
 	private String nome;
 	
 
@@ -82,7 +86,6 @@ public class Usuario {
 	}
 
 	public Usuario(String nome, String email, String senha) {
-		this.id = UUID.randomUUID();
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
