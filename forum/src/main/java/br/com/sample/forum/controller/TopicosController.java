@@ -27,9 +27,23 @@ public class TopicosController {
 	// @RequestMapping(name = "/topicos/", method = RequestMethod.GET)
 	@RequestMapping("/topicos")
 	// @ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<List<TopicoDTO>> lista() {
-		List<Topico> topicos = topicoRepository.findAll();
+	public ResponseEntity<List<TopicoDTO>> lista(String nomeCurso) {
+		
+		List<Topico> topicos;
+		if(nomeCurso == null) {
+			topicos = topicoRepository.findAll();
+		}
+		else {
+			topicos = topicoRepository.findByCursoNome(nomeCurso);
+		}
+		
 		return new ResponseEntity<List<TopicoDTO>>(TopicoDTO.converter(topicos), HttpStatus.OK);
 	}
+	/*
+	@RequestMapping("/topicos")
+	public ResponseEntity<List<TopicoDTO>> listaPorNome(String nomeCurso) {
+		List<Topico> topicos = topicoRepository.findByCursoNome(nomeCurso);
+		return new ResponseEntity<List<TopicoDTO>>(TopicoDTO.converter(topicos), HttpStatus.OK);
+	}*/
 
 }
