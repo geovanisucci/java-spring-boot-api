@@ -13,6 +13,7 @@ public interface TopicoRepository extends JpaRepository<Topico, Long> {
 
 	List<Topico> findByCursoNome(String nomeCurso);
 	
+	/*
 	@Query("SELECT t FROM Topico WHERE t.titulo = :titulo")
-	List<Topico> filtrarPorTitulo(@Param("titulo") String titulo);
+	List<Topico> filtrarPorTitulo(@Param("titulo") String titulo);*/
 }
