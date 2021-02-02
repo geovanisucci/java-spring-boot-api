@@ -1,13 +1,22 @@
 package br.com.sample.forum.commands;
 
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 import br.com.sample.forum.data.CursoRepository;
 import br.com.sample.forum.modelo.Curso;
 import br.com.sample.forum.modelo.Topico;
 
 public class CreateTopicoCommand {
-	
+
+	@NotNull @NotEmpty @Length(min = 5)
 	private String titulo;
+	@NotNull @NotEmpty @Length(min = 10)
 	private String mensagem;
+	@NotNull @NotEmpty
 	private String nomeCurso;
 	
 	public String getTitulo() {
