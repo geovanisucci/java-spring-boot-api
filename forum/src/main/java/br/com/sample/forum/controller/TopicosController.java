@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,7 +54,7 @@ public class TopicosController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<TopicoDTO> cadastrar(@RequestBody CreateTopicoCommand command, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<TopicoDTO> cadastrar(@RequestBody @Valid CreateTopicoCommand command, UriComponentsBuilder uriBuilder) {
 		
 		Topico topico = command.converter(cursoRepository);
 		
